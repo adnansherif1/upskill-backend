@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, Response
 from flask_sqlalchemy import SQLAlchemy
-from flask_marshmallow import Marshmallow
+# from flask_marshmallow import Marshmallow
 import os
 import json
 
@@ -26,7 +26,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # Init db
 db = SQLAlchemy(app)
 # Init ma
-ma = Marshmallow(app)
+# ma = Marshmallow(app)
 
 
 # User Class/Model
@@ -45,18 +45,18 @@ class User(db.Model):
         # self.qty = qty
 
 
-# userData Schema
-class UserSchema(ma.Schema):
-    class Meta:
-        # fields = ('id', 'cookieVal', 'data')
-        fields = ('cookieVal', 'data')
-        # should i use this or give all the fields?
-        # fields = ('data')
+# # userData Schema
+# class UserSchema(ma.Schema):
+#     class Meta:
+#         # fields = ('id', 'cookieVal', 'data')
+#         fields = ('cookieVal', 'data')
+#         # should i use this or give all the fields?
+#         # fields = ('data')
 
 
-# Init schema
-User_schema = UserSchema(strict=True)
-Users_schema = UserSchema(many=True, strict=True)
+# # Init schema
+# User_schema = UserSchema(strict=True)
+# Users_schema = UserSchema(many=True, strict=True)
 
 
 #Test function
@@ -72,9 +72,10 @@ def test():
 
     #Get
     user = db.session.get(User, cookieVal)
-    userjson = User_schema.jsonify(user)
+    # userjson = User_schema.jsonify(user)
 
-    return Response(userjson, mimetype="application/json", status=200)
+    # return Response(jsonify(user.data), mimetype="application/json", status=200)
+    return "Hello World!"
 
 
 
@@ -150,5 +151,7 @@ def test():
 # Run Server
 if __name__ == '__main__':
     # app.run(debug=True)
-    app.run(host="0.0.0.0", port=4000, debug=True)
+    # app.run(host="0.0.0.0", port=5000, debug=True)
     db.create_all()
+    app.run(port=5000, debug=True)
+    
