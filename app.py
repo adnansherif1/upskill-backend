@@ -3,6 +3,8 @@ from flask_sqlalchemy import SQLAlchemy
 # from flask_marshmallow import Marshmallow
 import os
 import json
+from flask_cors import CORS, cross_origin
+
 
 # import pymysql
 # conn = pymysql.connect(
@@ -30,6 +32,16 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:!Applient!@localhost/appli
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+applient_config = {
+  "origins": ["http://ec2-18-118-23-14.us-east-2.compute.amazonaws.com:4000"],
+  "methods": ["OPTIONS", "GET", "POST"],
+  "allow_headers": ["Authorization"]
+}
+
+#CORS(app, resources={"/*": applient_config})
+
+#CORS(app)
+
 # engine = create_engine('mysql://applient:#applient#@applient.cvhkke0wsqzk.us-east-2.rds.amazonaws.com:3306/applient')
 #to prevent connection issues?
 # SQLALCHEMY_ENGINE_OPTIONS = {
@@ -50,8 +62,8 @@ class User(db.Model):
     # description = db.Column(db.String(200))
     # price = db.Column(db.Float)
     # qty = db.Column(db.Integer)
-    data = db.Column(db.String(500))
-    # data = db.Column(db.JSON)
+    data = db.Column(db.String(1000))
+    #data = db.Column(db.JSON)
 
     def __init__(self, cookieVal, data):
         self.cookieVal = cookieVal
@@ -97,12 +109,13 @@ class User(db.Model):
 
 # Create a User
 @app.route('/', methods=['POST'])
+#@cross_origin(headers=['application/json'])
 def add_user():
-	print("post reached")
+    print("post reached")
     cookieVal = request.args.get('identifier')
     print("cookieVal: " + cookieVal)
     # data = request.json['applications']
-    # data = jsonify(request.get_json(force=True))
+    #data = request.get_json(force=True)
     data = request.data
 
     print("data is: " + data)
@@ -123,7 +136,11 @@ def add_user():
 
 
     # return Response(user.data, mimetype="application/json", status=200)
-    return Response(user.data, status=200)
+    #response = Response(jsonify(message="POST request sucessful!"), status=200)
+    response = Response("post successful!", status=200)
+    response.headers.add("Access-Control-Allow-Origin", "http://ec2-18-118-23-14.us-east-2.compute.amazonaws.com:3000")
+    response.headers.add("Access-Control-Allow-Credentials", "true")
+    return response
 
 
 # # Get All User
@@ -136,23 +153,37 @@ def add_user():
 
 # Get Single User
 @app.route('/', methods=['GET'])
+#@cross_origin(headers=['application/json'])
 def get_user():
-	print("get reached")
+    print("get reached")
     cookieVal = request.args.get('identifier')
     print("cookieVal: " + cookieVal)
     # user = User.query.get(cookieVal)
     user = db.session.get(User, cookieVal)
     # userjson = User_schema.jsonify(user)
-    print("user gotten")
-    # return Response(user.data, mimetype="application/json", status=200)
-    return Response(user.data, status=200)
+    if user is None:
+        print("invalid user")
+        response = Response('', status=204)
+        response.headers.add("Access-Control-Allow-Origin", "http://ec2-18-118-23-14.us-east-2.compute.amazonaws.com:3000")
+        response.headers.add("Access-Control-Allow-Credentials", "true")
+    else:
+        print("user gotten")
+        test_response = jsonify(message="Simple server is running")
+        test_string = "test12345"
+        #response = Response(jsonify(user.data), mimetype="application/json", status=200)
+        #response = Response(test_response, status=200)
+        response = Response(str(user.data), status=200)
+        response.headers.add("Access-Control-Allow-Origin", "http://ec2-18-118-23-14.us-east-2.compute.amazonaws.com:3000")
+        response.headers.add("Access-Control-Allow-Credentials", "true")
+    return response
+    #return Response(user.data, status=200)
 
 
 
 # Update a User
 @app.route('/', methods=['PUT'])
 def update_user():
-	print("put reached")
+    print("put reached")
     cookieVal = request.args.get('identifier')
     print("cookieVal: " + cookieVal)
     user = db.session.get(User, cookieVal)
@@ -176,6 +207,18 @@ def delete_product():
     db.session.commit()
 
     return user.data
+
+#Options
+@app.route('/', methods=['OPTIONS'])
+def sending_headers():
+    print("options reached")
+    test_response = jsonify(message="Simple server is running")
+    response = Response(test_response, status=200)
+    response.headers.add("Access-Control-Allow-Origin", "http://ec2-18-118-23-14.us-east-2.compute.amazonaws.com:3000")
+    response.headers.add("Access-Control-Allow-Methods", "POST, GET, OPTIONS")
+    response.headers.add("Access-Control-Allow-Credentials", "true")
+    print("options returning")
+    return response
 
 
 # Run Server
