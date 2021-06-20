@@ -50,8 +50,8 @@ class User(db.Model):
     # description = db.Column(db.String(200))
     # price = db.Column(db.Float)
     # qty = db.Column(db.Integer)
-    data = db.Column(db.String(10))
-    data = db.Column(db.JSON)
+    data = db.Column(db.String(500))
+    # data = db.Column(db.JSON)
 
     def __init__(self, cookieVal, data):
         self.cookieVal = cookieVal
@@ -100,9 +100,13 @@ class User(db.Model):
 def add_user():
 	print("post reached")
     cookieVal = request.args.get('identifier')
-    print("cookieVal" + cookieVal)
+    print("cookieVal: " + cookieVal)
     # data = request.json['applications']
-    data = jsonify(request.get_json(force=True))
+    # data = jsonify(request.get_json(force=True))
+    data = request.data
+
+    print("data is: " + data)
+
     # data = request.args.get('applications')
     user = db.session.get(User, cookieVal)
     if user is None:
@@ -115,8 +119,11 @@ def add_user():
     db.session.commit()
 
     # return User_schema.jsonify(user)
+    # response = Response(user.data, mimetype="application/json", status=200)
 
-    return Response(user.data, mimetype="application/json", status=200)
+
+    # return Response(user.data, mimetype="application/json", status=200)
+    return Response(user.data, status=200)
 
 
 # # Get All User
@@ -132,12 +139,14 @@ def add_user():
 def get_user():
 	print("get reached")
     cookieVal = request.args.get('identifier')
-    print("cookieVal" + cookieVal)
+    print("cookieVal: " + cookieVal)
     # user = User.query.get(cookieVal)
     user = db.session.get(User, cookieVal)
     # userjson = User_schema.jsonify(user)
     print("user gotten")
-    return Response(user.data, mimetype="application/json", status=200)
+    # return Response(user.data, mimetype="application/json", status=200)
+    return Response(user.data, status=200)
+
 
 
 # Update a User
@@ -145,7 +154,7 @@ def get_user():
 def update_user():
 	print("put reached")
     cookieVal = request.args.get('identifier')
-    print("cookieVal" + cookieVal)
+    print("cookieVal: " + cookieVal)
     user = db.session.get(User, cookieVal)
 
     data = jsonify(request.get_json(force=True))
