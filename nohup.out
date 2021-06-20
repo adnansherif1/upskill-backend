@@ -1,0 +1,62 @@
+ * Tip: There are .env or .flaskenv files present. Do "pip install python-dotenv" to use them.
+ * Serving Flask app "app" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on http://0.0.0.0:4000/ (Press CTRL+C to quit)
+[2021-06-20 12:53:11,009] ERROR in app: Exception on / [GET]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 160, in get_user
+    print("cookieVal: " + cookieVal)
+TypeError: cannot concatenate 'str' and 'NoneType' objects
+45.130.83.212 - - [20/Jun/2021 12:53:11] "[35m[1mGET /?identifier:1234567890 HTTP/1.1[0m" 500 -
+[2021-06-20 12:53:46,208] ERROR in app: Exception on / [GET]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 160, in get_user
+    print("cookieVal: " + cookieVal)
+TypeError: cannot concatenate 'str' and 'NoneType' objects
+45.130.83.212 - - [20/Jun/2021 12:53:46] "[35m[1mGET /?identifier:=234567890 HTTP/1.1[0m" 500 -
+45.130.83.212 - - [20/Jun/2021 12:53:52] "[37mGET /?identifier=234567890 HTTP/1.1[0m" 204 -
+[2021-06-20 12:54:06,283] ERROR in app: Exception on / [GET]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 160, in get_user
+    print("cookieVal: " + cookieVal)
+TypeError: cannot concatenate 'str' and 'NoneType' objects
+45.130.83.212 - - [20/Jun/2021 12:54:06] "[35m[1mGET / HTTP/1.1[0m" 500 -
+get reached
+get reached
+get reached
+cookieVal: 234567890
+invalid user
+get reached

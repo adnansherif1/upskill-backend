@@ -58,7 +58,7 @@ db = SQLAlchemy(app)
 # User Class/Model
 class User(db.Model):
     # id = db.Column(db.Integer, primary_key=True)
-    cookieVal = db.Column(db.String(10), primary_key=True, unique=True)
+    cookieVal = db.Column(db.String(100), primary_key=True, unique=True)
     # description = db.Column(db.String(200))
     # price = db.Column(db.Float)
     # qty = db.Column(db.Integer)
@@ -113,12 +113,12 @@ class User(db.Model):
 def add_user():
     print("post reached")
     cookieVal = request.args.get('identifier')
-    print("cookieVal: " + cookieVal)
+    #print("cookieVal: " + cookieVal)
     # data = request.json['applications']
     #data = request.get_json(force=True)
     data = request.data
 
-    print("data is: " + data)
+    #print("data is: " + data)
 
     # data = request.args.get('applications')
     user = db.session.get(User, cookieVal)
@@ -142,7 +142,6 @@ def add_user():
     response.headers.add("Access-Control-Allow-Credentials", "true")
     return response
 
-
 # # Get All User
 # @app.route('/', methods=['GET'])
 # def get_users():
@@ -157,7 +156,7 @@ def add_user():
 def get_user():
     print("get reached")
     cookieVal = request.args.get('identifier')
-    print("cookieVal: " + cookieVal)
+    #print("cookieVal: " + cookieVal)
     # user = User.query.get(cookieVal)
     user = db.session.get(User, cookieVal)
     # userjson = User_schema.jsonify(user)
@@ -185,7 +184,7 @@ def get_user():
 def update_user():
     print("put reached")
     cookieVal = request.args.get('identifier')
-    print("cookieVal: " + cookieVal)
+    #print("cookieVal: " + cookieVal)
     user = db.session.get(User, cookieVal)
 
     data = jsonify(request.get_json(force=True))
@@ -227,5 +226,5 @@ if __name__ == '__main__':
     # app.run(host="0.0.0.0", port=5000, debug=True)
     db.create_all()
     # app.run(port=5000, debug=True)
-    app.run(host="0.0.0.0", port=4000, debug=True)
-    
+    #app.run(host="0.0.0.0", port=4000, debug=True)
+    app.run(host="0.0.0.0", port=4000)
