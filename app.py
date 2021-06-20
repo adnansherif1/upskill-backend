@@ -129,6 +129,6 @@ def delete_product():
 
 # Run Server
 if __name__ == '__main__':
-    db.create_all()
+    # db.create_all()
     # app.run(debug=True)
-    app.run(host="0.0.0.0", port=int("80"), debug=True)
+    app.run(host="0.0.0.0", port=4000, debug=True)
