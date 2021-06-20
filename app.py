@@ -98,7 +98,9 @@ class User(db.Model):
 # Create a User
 @app.route('/', methods=['POST'])
 def add_user():
+	print("post reached")
     cookieVal = request.args.get('identifier')
+    print("cookieVal" + cookieVal)
     # data = request.json['applications']
     data = jsonify(request.get_json(force=True))
     # data = request.args.get('applications')
@@ -106,6 +108,7 @@ def add_user():
     if user is None:
         user = User(cookieVal, data)
         db.session.add(user)
+        print("user added")
     else:
         user.data = data
 
@@ -127,19 +130,22 @@ def add_user():
 # Get Single User
 @app.route('/', methods=['GET'])
 def get_user():
+	print("get reached")
     cookieVal = request.args.get('identifier')
-
+    print("cookieVal" + cookieVal)
     # user = User.query.get(cookieVal)
     user = db.session.get(User, cookieVal)
     # userjson = User_schema.jsonify(user)
-
+    print("user gotten")
     return Response(user.data, mimetype="application/json", status=200)
 
 
 # Update a User
 @app.route('/', methods=['PUT'])
 def update_user():
+	print("put reached")
     cookieVal = request.args.get('identifier')
+    print("cookieVal" + cookieVal)
     user = db.session.get(User, cookieVal)
 
     data = jsonify(request.get_json(force=True))
