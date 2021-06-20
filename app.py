@@ -59,72 +59,92 @@ User_schema = UserSchema(strict=True)
 Users_schema = UserSchema(many=True, strict=True)
 
 
-# Create a User
-@app.route('/', methods=['POST'])
-def add_user():
-    cookieVal = request.args.get('identifier')
-    # data = request.json['applications']
-    data = jsonify(request.get_json(force=True))
+#Test function
+@app.route('/')
+def test():
+    cookieVal = "input1"
+    dataString = "test123"
+    data = jsonify(dataString)
     # data = request.args.get('applications')
-    user = db.session.get(User, cookieVal)
-    if user is None:
-        user = User(cookieVal, data)
-        db.session.add(user)
-    else:
-        user.data = data
-
+    user = User(cookieVal, data)
+    db.session.add(user)
     db.session.commit()
 
-    # return User_schema.jsonify(user)
-
-    return Response(User_schema.jsonify(user), mimetype="application/json", status=200)
-
-
-# # Get All User
-# @app.route('/', methods=['GET'])
-# def get_users():
-#     all_users = User.query.all()
-#     result = Users_schema.dump(all_users)
-#     return jsonify(result.data)
-
-
-# Get Single User
-@app.route('/', methods=['GET'])
-def get_user():
-    cookieVal = request.args.get('identifier')
-
-    # user = User.query.get(cookieVal)
+    #Get
     user = db.session.get(User, cookieVal)
     userjson = User_schema.jsonify(user)
 
-    return Response(userjson['data'], mimetype="application/json", status=200)
+    return Response(userjson, mimetype="application/json", status=200)
 
 
-# Update a User
-@app.route('/', methods=['PUT'])
-def update_user():
-    cookieVal = request.args.get('identifier')
-    user = db.session.get(User, cookieVal)
-
-    data = jsonify(request.get_json(force=True))
-
-    user.data = data
-
-    db.session.commit()
-
-    return Response(User_schema.jsonify(user), mimetype="application/json", status=200)
 
 
-# Delete User
-@app.route('/', methods=['DELETE'])
-def delete_product():
-    cookieVal = request.args.get('identifier')
-    # user = User.query.get(cookieVal)
-    user = db.session.get(User, cookieVal)
-    db.session.delete(user)
-    db.session.commit()
-
-    return User_schema.jsonify(user)
+# # Create a User
+# @app.route('/', methods=['POST'])
+# def add_user():
+#     cookieVal = request.args.get('identifier')
+#     # data = request.json['applications']
+#     data = jsonify(request.get_json(force=True))
+#     # data = request.args.get('applications')
+#     user = db.session.get(User, cookieVal)
+#     if user is None:
+#         user = User(cookieVal, data)
+#         db.session.add(user)
+#     else:
+#         user.data = data
+#
+#     db.session.commit()
+#
+#     # return User_schema.jsonify(user)
+#
+#     return Response(User_schema.jsonify(user), mimetype="application/json", status=200)
+#
+#
+# # # Get All User
+# # @app.route('/', methods=['GET'])
+# # def get_users():
+# #     all_users = User.query.all()
+# #     result = Users_schema.dump(all_users)
+# #     return jsonify(result.data)
+#
+#
+# # Get Single User
+# @app.route('/', methods=['GET'])
+# def get_user():
+#     cookieVal = request.args.get('identifier')
+#
+#     # user = User.query.get(cookieVal)
+#     user = db.session.get(User, cookieVal)
+#     userjson = User_schema.jsonify(user)
+#
+#     return Response(userjson['data'], mimetype="application/json", status=200)
+#
+#
+# # Update a User
+# @app.route('/', methods=['PUT'])
+# def update_user():
+#     cookieVal = request.args.get('identifier')
+#     user = db.session.get(User, cookieVal)
+#
+#     data = jsonify(request.get_json(force=True))
+#
+#     user.data = data
+#
+#     db.session.commit()
+#
+#     return Response(User_schema.jsonify(user), mimetype="application/json", status=200)
+#
+#
+# # Delete User
+# @app.route('/', methods=['DELETE'])
+# def delete_product():
+#     cookieVal = request.args.get('identifier')
+#     # user = User.query.get(cookieVal)
+#     user = db.session.get(User, cookieVal)
+#     db.session.delete(user)
+#     db.session.commit()
+#
+#     return User_schema.jsonify(user)
 
 
 # Run Server
