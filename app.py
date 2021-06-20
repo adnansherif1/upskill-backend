@@ -8,19 +8,20 @@ import json
 app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
 # Database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://applient:#applient#@server/db' #get endpoint for server, and db instance name for db
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://applient:#applient#@applient.cvhkke0wsqzk.us-east-2.rds.amazonaws.com:3306/applient'
+#get endpoint for server, and db instance name for db
 
-'mysql://{master username}:{db password}@{endpoint}/{db instance name}'
+# 'mysql://{master username}:{db password}@{endpoint}/{db instance name}'
 
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-engine = create_engine('mysql://username:password@host:port/database')
+# engine = create_engine('mysql://applient:#applient#@applient.cvhkke0wsqzk.us-east-2.rds.amazonaws.com:3306/applient')
 #to prevent connection issues?
-SQLALCHEMY_ENGINE_OPTIONS = {
-    "pool_pre_ping": True,
-    "pool_recycle": 300,
-}
+# SQLALCHEMY_ENGINE_OPTIONS = {
+#     "pool_pre_ping": True,
+#     "pool_recycle": 300,
+# }
 
 # Init db
 db = SQLAlchemy(app)
@@ -91,6 +92,7 @@ def add_user():
 @app.route('/', methods=['GET'])
 def get_user():
     cookieVal = request.args.get('identifier')
+
     # user = User.query.get(cookieVal)
     user = db.session.get(User, cookieVal)
     userjson = User_schema.jsonify(user)
