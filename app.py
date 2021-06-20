@@ -1,14 +1,28 @@
-from flask import Flask, request, jsonify, Response
+from flask import Flask, request, jsonify, Response, session
 from flask_sqlalchemy import SQLAlchemy
 # from flask_marshmallow import Marshmallow
 import os
 import json
 
+# import pymysql
+# conn = pymysql.connect(
+#         host= applient.cvhkke0wsqzk.us-east-2.rds.amazonaws.com
+#         port = 3306
+#         user = applient
+#         password = #applient#
+#         db = applient
+#         )
+
+
 # Init app
 app = Flask(__name__)
-basedir = os.path.abspath(os.path.dirname(__file__))
+# basedir = os.path.abspath(os.path.dirname(__file__))
 # Database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://applient:#applient#@applient.cvhkke0wsqzk.us-east-2.rds.amazonaws.com:3306/applient'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://applient:#applient#@applient.cvhkke0wsqzk.us-east-2.rds.amazonaws.com:3306/applient'
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:!Applient!@localhost/applient_db'
+
+
 #get endpoint for server, and db instance name for db
 
 # 'mysql://{master username}:{db password}@{endpoint}/{db instance name}'
