@@ -3,7 +3,7 @@ import requests
 import json
 import os
 
-domain = os.getenv("domain")
+domain = os.getenv("model")
 url = "http://" + domain + ":3000/predict"
 
 # from flask_cors import CORS, cross_origin
