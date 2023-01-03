@@ -1,0 +1,279 @@
+@charset "UTF-8";
+
+* {
+    min-height: 0;
+    min-width: 0;
+    box-sizing: border-box;
+    transform-origin: 0px 0px 0px;
+}
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 0 !important; 
+    margin-top: 0 !important;
+    padding: 0 !important;
+    font-weight: bold !important; 
+    }
+
+.notBold {
+    font-weight: normal;
+}
+
+#fullname h6 {
+    font-size: 150%;
+}
+
+.contentPage {
+    margin: 5%;
+}
+
+p:blank, li:blank, div:blank, section:blank {
+    display: none;
+}
+
+p:empty, li:empty, div:empty, section:empty {
+    display: none;
+}
+
+p:-moz-only-whitespace, li:-moz-only-whitespace, div:-moz-only-whitespace, section:-moz-only-whitespace {
+    display: none;
+}
+
+hr {
+    border: 0;
+    clear:both;
+    display:block;
+    width: 100%;               
+    background-color:#000000;
+    height: 3px;
+    margin-top: 0;
+    margin-bottom : 0.4em; 
+    /*  */
+    /* margin-bottom: 1em; */
+  }
+
+/* Page Variables */
+
+:root {
+    --main-width: 100%;
+    /* --header-height: 1.2in; */
+    --sidebar-width: calc(100% - var(--main-width));
+    --space: 1em;
+    --fontSize: 0.95em
+}
+
+body {
+    font-size: var(--fontSize);
+    margin: 0 auto;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    font-family: Arial, Helvetica, sans-serif !important;
+
+    -webkit-tap-highlight-color: transparent;
+    text-rendering: optimizeLegibility;
+    text-decoration-skip: ink;
+    hyphens: auto;
+}
+
+div.scale {
+    display: flex;
+    flex-direction: column;
+
+    position: absolute;
+    right: 40px;
+    width: 100px;
+}
+
+button.scale {
+    margin: 5px;
+}
+
+
+#save > section:first-of-type {
+    display: flex;
+    flex-direction: row;
+}
+
+
+label {
+    font-size: 20px !important;
+    color: white;
+    height: 15px !important;
+    width: 150px !important;
+    text-align: center;
+    display: inline-block;
+}
+
+#scaleRatio {
+    font-size: 30px !important;
+    height: 50px !important;
+    width: 150px !important;
+    text-align: center;
+}
+
+
+
+.summary {
+    font-size: 105%;
+}
+
+/* Misc */
+
+img {
+    max-width: 100%;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+abbr[title] {
+    text-decoration: none;
+    border: none;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li + li {
+    margin-top: 0.4em;
+}
+
+.fa, .fab {
+    text-align: center;
+    min-width: 1em;
+}
+
+li .fa, li .fab {
+    margin-right: 0.3em;
+}
+
+/* Page layout */
+
+#save > section:first-of-type > aside {
+    flex-basis: var(--sidebar-width);
+    padding: 0.1618in 0 0.1618in 0.1618in;
+    display: flex;
+    flex-direction: column;
+}
+
+#save > section:first-of-type > aside > section + section {
+    margin-top: calc(2 * var(--space));
+}
+
+#save > section:first-of-type > aside > section:last-child {
+    margin-top: auto;
+} 
+
+#save > section:first-of-type > section {
+    flex-basis: var(--main-width);
+    display: flex;
+    flex-direction: column;
+}
+
+#save > section:first-of-type > section > header {
+    flex-basis: var(--header-height);
+    flex-grow: 0;
+    /* padding: 0.1618in; */
+}
+
+/* #save > section:first-of-type > section > section {
+    
+    padding-top: 0;
+    display: flex;
+    flex-direction: column;
+} */
+
+
+#save > section:first-of-type > section > section > section + section {
+    margin-top: var(--space);
+}
+
+#save > section:first-of-type > section > section > section:last-child {
+    margin-top: auto;
+}
+
+.personal ul > li {
+    text-align: center;
+}
+
+
+/* Experience & Education */
+
+.experience h6 {
+    margin-top: var(--space) !important;
+}
+
+.education ol,
+.experience ol {
+    margin: 0;
+    padding: 0;
+}
+
+.experience ol {
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+}
+
+.experience ol > li {
+    margin: 0;
+    padding: 0;
+    flex-basis: 100%;
+    font-weight: 300;
+}
+
+.education ol > li {
+    font-weight: 300;
+}
+
+/* TODO margin space in between each experience */
+.experience ol > li + li {
+    margin-top: calc(0.5 * var(--space));
+}
+
+.education ol > li div,
+.education ol > li header,
+.experience ol > li header {
+    display: flex;
+    flex-direction: row;
+}
+
+.experience ol > li > span,
+.education ol > li p,
+.experience ol > li header p {
+    font-weight: 400;
+}
+
+.education ol > li header p,
+.experience ol > li header p {
+    font-size: 105%;
+}
+
+.education ol > li header > *:last-child,
+.education ol > li div > *:last-child,
+.experience ol > li header > *:last-child {
+    margin-left: auto;
+}
+
+/* 
+TODO padding space in between each experience's project name & description
+.education ol > li ul,
+.experience ol > li ul {
+    padding-top: calc((var(--space) - 1em) * 0.2 + 0.5em);
+} */
+
+.education ol > li ul li,
+.experience ol > li ul li {
+    list-style-type: circle;
+    margin-left: 1.618em;
+    margin-top: calc((var(--space) - 1em) * 0.5 + 0.3em);
+}
+

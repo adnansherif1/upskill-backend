@@ -1,0 +1,23 @@
+.first-div {
+    margin-top: 25px !important;
+    position: relative;
+    justify-content: center;
+}
+
+.median-box {
+    width: 70%;
+    position: relative;
+    justify-content: center;
+}
+
+.SmartSearchForm {
+    margin: 50px;
+    position: relative;
+    justify-content: center;
+}
+
+.submitButton {
+    text-align: center; 
+    margin-top: 25px; 
+    position: relative;
+}

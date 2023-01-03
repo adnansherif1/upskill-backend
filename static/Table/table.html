@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<title>Application Tracker</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../css/all.css">
+
+	<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section">Application Tracker</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-wrap">
+						<table class="table table-striped" id="accordion">
+							<thead>
+								<tr>
+									<th>Count</th>
+									<th>Company</th>
+									<th>Role</th>
+									<th>Link</th>
+									<th>Status</th>
+									<th>Note</th>
+									<th>Contact</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr id="row1" data-toggle="collapse" data-target="#description1" aria-expanded="true"
+									aria-controls="description1">
+									<th Class="count" scope="row"></th>
+									<td Class="company"><input class="smallBox"></input></td>
+									<td Class="role"><input class="smallBox"></input></td>
+									<td Class="link"><a href="#" class="btn btn-info">Link</a></td>
+									<td Class="status">
+										<select name="status" id="status">
+											<option value="waiting">Waiting to Apply</option>
+											<option value="applied">Applied</option>
+											<option value="interview1">QA</option>
+											<option value="interview2">Interview Round One</option>
+											<option value="interview3">Interview Round Two</option>
+											<option value="accept">Accept</option>
+											<option value="reject">Reject</option>
+										</select>
+									</td>
+									<td Class="Note"><textarea class="largeBox"></textarea></td>
+									<td Class="contact"><input></input></td>
+									<td Class="delete"><button class="deleteRow"><i class="fas fa-times"></i></button>
+									</td>
+								</tr>
+								<tr class="collapse" id="description1" class="collapse show acc"
+									data-parent="#accordion">
+									<td colspan="6">
+										<p>Job Description(optional)
+										</p>
+									</td>
+								</tr>
+
+								<tr id="addOneRow">
+									<td colspan="8">
+										<button style="margin-left: 2.7%"><i class="fas fa-plus"></i></button>
+									</td>
+								</tr>
+
+								<!-- 						    <tr id = "row2" data-toggle="collapse" data-target="#description2" aria-expanded="true" aria-controls="description2">
+						      <th Class = "count" scope="row">999</th>
+						      <td Class = "company">Mark Otto</td>
+						      <td Class = "role">Japan</td>
+						      <td Class = "contact">$3000</td>
+							  <td Class = "link"><a href="#" class="btn btn-info">Link</a></td>
+						      <td Class = "status"><a href="#" class="btn btn-success">Progress</a></td>
+							  <td Class = "Note"><input></input></td>
+						    </tr>
+							<tr class="collapse" id="description2" class="collapse show acc" data-parent="#accordion">
+								<td colspan="6">
+									<p >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro iste, facere sunt sequi nostrum ipsa, amet doloremque magnam reiciendis tempore sapiente. Necessitatibus recusandae harum nam sit perferendis quia inventore natus.</p>
+								</td>
+							</tr>
+
+						    <tr id = "row3" data-toggle="collapse" data-target="#description3" aria-expanded="true" aria-controls="description3">
+						      <th Class = "count" scope="row">999</th>
+						      <td Class = "company">Mark Otto</td>
+						      <td Class = "role">Japan</td>
+						      <td Class = "contact">$3000</td>
+							  <td Class = "link"><a href="#" class="btn btn-info">Link</a></td>
+						      <td Class = "status"><a href="#" class="btn btn-success">Progress</a></td>
+							  <td Class = "Note"><input></input></td>
+						    </tr>
+							<tr class="collapse" id="description3" class="collapse show acc" data-parent="#accordion">
+								<td colspan="6">
+									<p >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro iste, facere sunt sequi nostrum ipsa, amet doloremque magnam reiciendis tempore sapiente. Necessitatibus recusandae harum nam sit perferendis quia inventore natus.</p>
+								</td>
+							</tr>
+
+						    <tr id = "row4" data-toggle="collapse" data-target="#description4" aria-expanded="true" aria-controls="description4">
+						      <th Class = "count" scope="row">999</th>
+						      <td Class = "company">Mark Otto</td>
+						      <td Class = "role">Japan</td>
+						      <td Class = "contact">$3000</td>
+							  <td Class = "link"><a href="#" class="btn btn-info">Link</a></td>
+						      <td Class = "status"><a href="https://www.facebook.com/careers/v2/jobs/690677351721309/" class="btn btn-success">Progress</a></td>
+							  <td Class = "Note"><input></input></td>
+						    </tr>
+							<tr class="collapse" id="description4" class="collapse show acc" data-parent="#accordion">
+								<td colspan="6">
+									<p >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro iste, facere sunt sequi nostrum ipsa, amet doloremque magnam reiciendis tempore sapiente. Necessitatibus recusandae harum nam sit perferendis quia inventore natus.</p>
+								</td>
+							</tr>
+
+							<tr id = "row5" data-toggle="collapse" data-target="#description5" aria-expanded="true" aria-controls="description5">
+						      <th Class = "count" scope="row">999</th>
+						      <td Class = "company">Mark Otto</td>
+						      <td Class = "role">Japan</td>
+						      <td Class = "contact">$3000</td>
+							  <td Class = "link"><a href="#" class="btn btn-info">Link</a></td>
+						      <td Class = "status"><a href="#" class="btn btn-success">Progress</a></td>
+							  <td Class = "Note"><input></input></td>
+						    </tr>
+							<tr class="collapse" id="description5" class="collapse show acc" data-parent="#accordion">
+								<td colspan="6">
+									<p >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro iste, facere sunt sequi nostrum ipsa, amet doloremque magnam reiciendis tempore sapiente. Necessitatibus recusandae harum nam sit perferendis quia inventore natus.</p>
+								</td>
+							</tr>
+
+							<tr id = "row6" data-toggle="collapse" data-target="#description6" aria-expanded="true" aria-controls="description6">
+						      <th Class = "count" scope="row">999</th>
+						      <td Class = "company">Mark Otto</td>
+						      <td Class = "role">Japan</td>
+						      <td Class = "contact">$3000</td>
+							  <td Class = "link"><a href="#" class="btn btn-info">Link</a></td>
+						      <td Class = "status"><a href="#" class="btn btn-success">Progress</a></td>
+							  <td Class = "Note"><input></input></td>
+						    </tr>
+							<tr class="collapse" id="description6" class="collapse show acc" data-parent="#accordion">
+								<td colspan="6">
+									<p >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro iste, facere sunt sequi nostrum ipsa, amet doloremque magnam reiciendis tempore sapiente. Necessitatibus recusandae harum nam sit perferendis quia inventore natus.</p>
+								</td>
+							</tr>
+
+
+							<tr id = "row7" data-toggle="collapse" data-target="#description7" aria-expanded="true" aria-controls="description7">
+						      <th Class = "count" scope="row">999</th>
+						      <td Class = "company">Mark Otto</td>
+						      <td Class = "role">Japan</td>
+						      <td Class = "contact">$3000</td>
+							  <td Class = "link"><a href="#" class="btn btn-info">Link</a></td>
+						      <td Class = "status"><a href="https://www.facebook.com/careers/v2/jobs/690677351721309/" class="btn btn-success">Progress</a></td>
+							  <td Class = "Note"><input></input></td>
+						    </tr>
+							<tr class="collapse" id="description7" class="collapse show acc" data-parent="#accordion">
+								<td colspan="6">
+									<p >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro iste, facere sunt sequi nostrum ipsa, amet doloremque magnam reiciendis tempore sapiente. Necessitatibus recusandae harum nam sit perferendis quia inventore natus.</p>
+								</td>
+							</tr> -->
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div>
+					<button id="save" class="btn btn-info">Save</button>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/popper.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="../dataHandler.js"></script>
+	<script src="js/main.js"></script>
+
+</body>
+
+</html>
